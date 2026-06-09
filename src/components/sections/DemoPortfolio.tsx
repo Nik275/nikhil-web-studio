@@ -6,9 +6,9 @@ import { ExternalLink, MessageCircle, Scissors, Dumbbell, Coffee, Check } from "
 
 // Demo links - easy to replace
 const DEMO_LINKS = {
-  auraLuxe: "#", // Replace with: "https://your-demo-link.com/aura-luxe"
-  ironForge: "#", // Replace with: "https://your-demo-link.com/iron-forge"
-  bloomBrew: "#", // Replace with: "https://your-demo-link.com/bloom-brew"
+  auraLuxe: "https://aura-luxe-salon-seven.vercel.app/",
+  ironForge: "https://ironforge-fitness-bay.vercel.app/",
+  bloomBrew: "https://bloom-brew-cafe.vercel.app/",
 };
 
 const demos = [
