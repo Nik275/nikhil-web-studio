@@ -160,7 +160,7 @@ Message: ${formData.message}`
 
                     <div className="border-b border-[#C8A96A]/20 pb-6">
                       <div className="text-[10px] uppercase tracking-[0.2em] text-[#C8A96A] mb-2">Location</div>
-                      <div className="text-lg font-light text-[#F7F3EA] max-w-xs leading-relaxed">Arya Nagar, Rohtak - 124001, Haryana, India</div>
+                      <div className="text-lg font-light text-[#F7F3EA] max-w-xs leading-relaxed">Haryana, India</div>
                     </div>
                   </div>
 

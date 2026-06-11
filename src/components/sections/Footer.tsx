@@ -112,7 +112,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="py-8 border-t border-[#333] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-[10px] uppercase tracking-widest text-[#6d6d6d]">
-            Rohtak, Haryana, India
+            Haryana, India
           </div>
           
           <p className="text-[10px] uppercase tracking-widest text-[#6d6d6d] text-center">
