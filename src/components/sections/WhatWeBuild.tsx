@@ -2,83 +2,46 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import {
-  Scissors,
-  Dumbbell,
-  Coffee,
-  GraduationCap,
-  Camera,
-  Briefcase,
-  ArrowRight,
-  MessageCircle,
-} from "lucide-react";
+import { CinematicFrame } from "@/components/ui/CinematicFrame";
+import { StudioLampGlow } from "../decorations/StudioLampGlow";
+import { StationerySet } from "../decorations/StationerySet";
 
 const services = [
   {
-    icon: Scissors,
     title: "Salon & Spa Websites",
-    description:
-      "Elegant websites with services, packages, gallery, reviews, and WhatsApp booking.",
+    description: "Elegant websites with services, packages, gallery, reviews, and WhatsApp booking.",
     benefit: "More booking enquiries through WhatsApp",
-    color: "from-pink-500 to-rose-500",
-    bgColor: "bg-pink-50",
-    iconColor: "text-pink-500",
   },
   {
-    icon: Dumbbell,
     title: "Gym & Fitness Websites",
-    description:
-      "Bold websites with programs, membership plans, transformation sections, and trial booking.",
+    description: "Bold websites with programs, membership plans, transformation sections, and trial booking.",
     benefit: "More membership enquiries and trial signups",
-    color: "from-orange-500 to-red-500",
-    bgColor: "bg-orange-50",
-    iconColor: "text-orange-500",
   },
   {
-    icon: Coffee,
     title: "Cafe & Restaurant Websites",
-    description:
-      "Warm websites with menu, gallery, table reservation, opening hours, and location.",
+    description: "Warm websites with menu, gallery, table reservation, opening hours, and location.",
     benefit: "More table reservations and takeaway orders",
-    color: "from-amber-500 to-yellow-500",
-    bgColor: "bg-amber-50",
-    iconColor: "text-amber-600",
   },
   {
-    icon: GraduationCap,
     title: "Coaching & Clinic Websites",
-    description:
-      "Clear websites with services, appointments, credibility sections, and enquiry forms.",
+    description: "Clear websites with services, appointments, credibility sections, and enquiry forms.",
     benefit: "More appointment bookings and enquiries",
-    color: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-50",
-    iconColor: "text-blue-500",
   },
   {
-    icon: Camera,
     title: "Portfolio Websites",
-    description:
-      "Premium personal or professional websites for creators, photographers, consultants, and experts.",
+    description: "Premium personal or professional websites for creators, photographers, consultants, and experts.",
     benefit: "Stronger professional presence and client enquiries",
-    color: "from-purple-500 to-violet-500",
-    bgColor: "bg-purple-50",
-    iconColor: "text-purple-500",
   },
   {
-    icon: Briefcase,
     title: "Local Service Business Websites",
-    description:
-      "Lead-focused websites for interior designers, electricians, repair services, and consultants.",
+    description: "Lead-focused websites for interior designers, electricians, repair services, and consultants.",
     benefit: "More local leads and service enquiries",
-    color: "from-emerald-500 to-teal-500",
-    bgColor: "bg-emerald-50",
-    iconColor: "text-emerald-500",
   },
 ];
 
 export function WhatWeBuild() {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -106,75 +69,79 @@ export function WhatWeBuild() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="services"
-      className="relative py-24 lg:py-32 bg-[#0a0a0a] pb-28 md:pb-24"
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#18181b] to-[#0a0a0a]" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            What We Build
-          </h2>
-          <p className="text-lg text-stone-400">
-            Purpose-built websites designed to convert visitors into leads for your specific type of business.
-          </p>
+    <div ref={sectionRef}>
+      <CinematicFrame
+        id="services"
+        theme="green"
+        className="py-24 lg:py-32 overflow-hidden"
+      >
+        {/* Decorative Elements */}
+        <StudioLampGlow position="top-left" color="rgba(200, 169, 106, 0.25)" />
+        <div className="absolute top-20 right-10 w-[300px] h-[300px] transform rotate-12 hidden lg:block pointer-events-none drop-shadow-xl opacity-80 z-0">
+          <StationerySet />
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`group relative bg-gradient-to-br from-[#18181b] to-[#27272a] rounded-2xl p-8 border border-white/5 overflow-hidden card-hover transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 100}ms` }}
-            >
-              {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-
-              {/* Icon */}
-              <div className={`relative w-14 h-14 rounded-xl ${service.bgColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <service.icon className={`w-7 h-7 ${service.iconColor}`} />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-stone-400 mb-4 leading-relaxed">
-                {service.description}
-              </p>
-
-              {/* Benefit */}
-              <div className="flex items-start gap-2 mb-6">
-                <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color} mt-2`} />
-                <span className="text-sm text-stone-300">{service.benefit}</span>
-              </div>
-
-              {/* CTA */}
-              <Button
-                onClick={() => openWhatsApp(service.title)}
-                variant="outline"
-                className="w-full btn-secondary border-white/10 text-white hover:bg-white/5 hover:border-white/20 rounded-xl"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Ask for this
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+          {/* Section Header */}
+          <div
+            className={`max-w-4xl mb-24 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+          >
+            <div className="text-[10px] sm:text-xs font-medium text-[#9A8172] tracking-[0.2em] uppercase mb-8">
+              What We Build
             </div>
-          ))}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] text-[#111111] mb-8">
+              Purpose-built websites.
+            </h2>
+            <p className="text-xl text-[#9A8172] font-light leading-relaxed max-w-2xl">
+              Designed to convert visitors into leads for your specific type of business. No bloated templates.
+            </p>
+          </div>
+
+          {/* Services Grid (Wall-mounted panels) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`relative p-8 lg:p-12 bg-[#E8DED1] border border-[#d8cdbf] shadow-[0_15px_35px_rgba(74,48,35,0.05)] transition-all duration-1000 flex flex-col justify-between group hover:shadow-[0_20px_40px_rgba(74,48,35,0.08)] hover:-translate-y-1 ${
+                  isVisible ? "opacity-100" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
+              >
+                {/* Walnut Brown Top Strip */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-[#4A3023]" />
+
+                {/* Subtle panel reflection */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#ffffff]/30 via-transparent to-[rgba(74,48,35,0.02)] pointer-events-none" />
+
+                <div className="relative z-10 mt-2">
+                  <h3 className="text-2xl font-light text-[#111111] mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="text-[#7C8068] font-light leading-relaxed text-sm mb-6">
+                    {service.description}
+                  </p>
+                </div>
+
+                <div className="relative z-10">
+                  <div className="text-[10px] text-[#9A8172] uppercase tracking-widest mb-6 border-l border-[#C8A96A] pl-3">
+                    {service.benefit}
+                  </div>
+                  
+                  <Button
+                    onClick={() => openWhatsApp(service.title)}
+                    variant="default"
+                    className="w-full text-xs uppercase tracking-widest"
+                  >
+                    Ask for this
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </CinematicFrame>
+    </div>
   );
 }

@@ -12,55 +12,40 @@ import {
   Eye,
   CheckCircle2,
 } from "lucide-react";
+import { StudioLampGlow } from "../decorations/StudioLampGlow";
 
 const features = [
   {
-    icon: MessageCircle,
     title: "Built for WhatsApp leads",
-    description:
-      "Every website is designed to drive enquiries directly to your WhatsApp, making it easy for customers to reach you.",
+    description: "Every website is designed to drive enquiries directly to your WhatsApp, making it easy for customers to reach you.",
   },
   {
-    icon: Smartphone,
     title: "Mobile-first design",
-    description:
-      "Your customers are on mobile. Your website is built for them first, with responsive design that works on all devices.",
+    description: "Your customers are on mobile. Your website is built for them first, with responsive design that works on all devices.",
   },
   {
-    icon: Palette,
     title: "Clean premium visuals",
-    description:
-      "No cluttered templates. Every design is custom-crafted to look professional and build trust with your visitors.",
+    description: "No cluttered templates. Every design is custom-crafted to look professional and build trust with your visitors.",
   },
   {
-    icon: Zap,
     title: "Fast loading",
-    description:
-      "Speed matters. Your website loads quickly to keep visitors engaged and improve search rankings.",
+    description: "Speed matters. Your website loads quickly to keep visitors engaged and improve search rankings.",
   },
   {
-    icon: Search,
     title: "Local SEO basics",
-    description:
-      "Built-in SEO structure helps your business show up when local customers search for your services.",
+    description: "Built-in SEO structure helps your business show up when local customers search for your services.",
   },
   {
-    icon: RefreshCw,
     title: "Easy to update",
-    description:
-      "Simple content management means you can make small changes yourself without technical knowledge.",
+    description: "Simple content management means you can make small changes yourself without technical knowledge.",
   },
   {
-    icon: PenTool,
     title: "Business-focused copywriting",
-    description:
-      "Clear, conversion-focused content that speaks to your customers and drives them to take action.",
+    description: "Clear, conversion-focused content that speaks to your customers and drives them to take action.",
   },
   {
-    icon: Eye,
-    title: "Free homepage preview option",
-    description:
-      "See exactly how your business will look online before committing to the full project.",
+    title: "Free preview option",
+    description: "See exactly how your business will look online before committing to the full project.",
   },
 ];
 
@@ -90,58 +75,63 @@ export function WhyChooseUs() {
     <section
       ref={sectionRef}
       id="why-us"
-      className="relative py-24 lg:py-32 bg-[#0a0a0a] pb-28 md:pb-24"
+      className="relative py-24 lg:py-32 bg-[#F7F3EA] text-[#111111] overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#18181b] to-[#0a0a0a]" />
+      {/* Decorative Elements */}
+      <StudioLampGlow position="bottom-right" color="rgba(200, 169, 106, 0.08)" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`max-w-4xl mb-24 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Built for Business Results,
+          <div className="text-[10px] sm:text-xs font-medium text-[#9A8172] tracking-[0.2em] uppercase mb-8">
+            Why Us
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] text-[#111111] mb-8">
+            Built for results.
             <br />
-            <span className="text-gradient">Not Just Looks</span>.
+            <span className="text-[#9A8172]">Not just looks.</span>
           </h2>
-          <p className="text-lg text-stone-400">
+          <p className="text-xl text-[#9A8172] font-light leading-relaxed max-w-2xl">
             Every element is designed with one goal: turning visitors into leads for your business.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Features Grid (Strategy Board) */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 relative">
+          {/* Subtle connecting lines behind panels */}
+          <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-[#9A8172] opacity-30 hidden lg:block -z-10" />
+          
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`group relative bg-gradient-to-br from-[#18181b] to-[#27272a] rounded-2xl p-6 border border-white/5 card-hover transition-all duration-700 ${
+              className={`p-8 bg-[#E8DED1] border border-[#d8cdbf] shadow-[0_10px_20px_rgba(74,48,35,0.03)] transition-all duration-1000 flex flex-col justify-between group hover:shadow-[0_15px_30px_rgba(74,48,35,0.06)] hover:-translate-y-1 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${(index + 1) * 100}ms` }}
             >
-              {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 text-blue-400" />
+              <div>
+                <div className="text-[#9A8172] font-light text-[10px] uppercase tracking-widest mb-4">
+                  0{index + 1}
+                </div>
+                <h3 className="text-lg font-light text-[#111111] mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-[#7C8068] font-light leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-
-              {/* Content */}
-              <h3 className="text-lg font-semibold text-white mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-stone-400 leading-relaxed">
-                {feature.description}
-              </p>
             </div>
           ))}
         </div>
 
         {/* Trust indicators */}
         <div
-          className={`mt-16 flex flex-wrap justify-center gap-8 transition-all duration-1000 delay-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`mt-24 flex flex-wrap justify-start lg:justify-center gap-8 transition-all duration-1000 delay-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           {[
@@ -150,9 +140,9 @@ export function WhyChooseUs() {
             "Dedicated support",
             "Results-focused approach",
           ].map((item, index) => (
-            <div key={index} className="flex items-center gap-2 text-stone-500">
-              <CheckCircle2 className="w-5 h-5 text-green-500" />
-              <span className="text-sm">{item}</span>
+            <div key={index} className="flex items-center gap-3 text-[#9A8172] bg-[#F7F3EA] px-5 py-2.5 border border-[#C8A96A]/50 shadow-sm rounded-full">
+              <div className="w-1.5 h-1.5 bg-[#B46A4C] rounded-full" />
+              <span className="text-[10px] font-medium uppercase tracking-wider">{item}</span>
             </div>
           ))}
         </div>

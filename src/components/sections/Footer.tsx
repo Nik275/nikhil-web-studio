@@ -1,7 +1,5 @@
 "use client";
 
-import { MessageCircle, Mail, MapPin, ArrowUp, Camera } from "lucide-react";
-
 const quickLinks = [
   { label: "Home", href: "#hero" },
   { label: "Services", href: "#services" },
@@ -35,86 +33,54 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#0a0a0a] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-black text-white border-t border-[#333]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Main footer content */}
-        <div className="py-16 grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="py-24 grid md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="text-2xl font-bold text-white mb-4">
+            <div className="text-2xl font-light text-white tracking-tight mb-8">
               Nikhil Web Studio
             </div>
-            <p className="text-stone-400 max-w-md mb-6 leading-relaxed">
+            <p className="text-[#9a9a9a] font-light max-w-sm mb-12 leading-relaxed">
               Premium websites for local businesses that want more leads. 
               Built with focus on conversion, mobile experience, and WhatsApp integration.
             </p>
             
             {/* Contact Info */}
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 text-stone-400">
-                <MessageCircle className="w-4 h-4 text-green-500" />
-                <span>+91 93506 47437</span>
+            <div className="space-y-6">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#6d6d6d]">WhatsApp</span>
+                <a href="https://wa.me/919350647437" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#9a9a9a] transition-colors font-light">
+                  +91 93506 47437
+                </a>
               </div>
-              <div className="flex items-center gap-3 text-stone-400">
-                <Mail className="w-4 h-4 text-blue-500" />
-                <a href="mailto:nikhilogia@gmail.com" className="hover:text-white transition-colors">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#6d6d6d]">Email</span>
+                <a href="mailto:nikhilogia@gmail.com" className="text-white hover:text-[#9a9a9a] transition-colors font-light">
                   nikhilogia@gmail.com
                 </a>
               </div>
-              <div className="flex items-center gap-3 text-stone-400">
-                <Camera className="w-4 h-4 text-pink-500" />
-                <a 
-                  href="https://instagram.com/nikhilogia" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#6d6d6d]">Instagram</span>
+                <a href="https://instagram.com/nikhilogia" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#9a9a9a] transition-colors font-light">
                   @nikhilogia
                 </a>
               </div>
-              <div className="flex items-center gap-3 text-stone-400">
-                <MapPin className="w-4 h-4 text-amber-500" />
-                <span>Rohtak, Haryana</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <a
-                href="https://wa.me/919350647437"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center hover:bg-green-500/20 transition-colors"
-              >
-                <MessageCircle className="w-5 h-5 text-green-500" />
-              </a>
-              <a
-                href="mailto:nikhilogia@gmail.com"
-                className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center hover:bg-blue-500/20 transition-colors"
-              >
-                <Mail className="w-5 h-5 text-blue-500" />
-              </a>
-              <a
-                href="https://instagram.com/nikhilogia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-pink-500/10 flex items-center justify-center hover:bg-pink-500/20 transition-colors"
-              >
-                <Camera className="w-5 h-5 text-pink-500" />
-              </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h4 className="text-[10px] font-medium text-[#6d6d6d] uppercase tracking-[0.2em] mb-8">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-stone-400 hover:text-white transition-colors text-sm"
+                    className="text-[#9a9a9a] hover:text-white transition-colors font-light"
                   >
                     {link.label}
                   </button>
@@ -125,15 +91,15 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h4 className="text-[10px] font-medium text-[#6d6d6d] uppercase tracking-[0.2em] mb-8">
               Services
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {services.map((service, index) => (
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(service.href)}
-                    className="text-stone-400 hover:text-white transition-colors text-sm"
+                    className="text-[#9a9a9a] hover:text-white transition-colors font-light"
                   >
                     {service.label}
                   </button>
@@ -144,23 +110,21 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm text-stone-500">
-            <MapPin className="w-4 h-4" />
-            <span>Rohtak, Haryana</span>
+        <div className="py-8 border-t border-[#333] flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="text-[10px] uppercase tracking-widest text-[#6d6d6d]">
+            Rohtak, Haryana, India
           </div>
           
-          <p className="text-sm text-stone-500 text-center">
+          <p className="text-[10px] uppercase tracking-widest text-[#6d6d6d] text-center">
             © {new Date().getFullYear()} Nikhil Web Studio. All rights reserved.
           </p>
 
           {/* Scroll to top */}
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
-            aria-label="Scroll to top"
+            className="text-[10px] uppercase tracking-widest text-[#6d6d6d] hover:text-white transition-colors"
           >
-            <ArrowUp className="w-5 h-5 text-stone-400" />
+            Scroll to top ↑
           </button>
         </div>
       </div>

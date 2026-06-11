@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { ExternalLink, MessageCircle, Scissors, Dumbbell, Coffee, Check } from "lucide-react";
+import { CinematicFrame } from "@/components/ui/CinematicFrame";
+import { StudioPlant } from "../decorations/StudioPlant";
+import { FlowerPot } from "../decorations/FlowerPot";
 
 // Demo links - easy to replace
 const DEMO_LINKS = {
@@ -14,66 +16,27 @@ const DEMO_LINKS = {
 const demos = [
   {
     id: "aura-luxe",
-    icon: Scissors,
-    category: "Premium Salon Website",
-    title: "Aura Luxe Salon & Spa",
-    description:
-      "Elegant beauty website with services, packages, gallery, WhatsApp booking, and local SEO.",
-    features: [
-      "Service menu with pricing",
-      "Package highlights",
-      "Before/after gallery",
-      "WhatsApp booking integration",
-      "Customer testimonials",
-      "Local SEO optimization",
-    ],
-    color: "from-pink-500 to-rose-500",
-    bgColor: "bg-pink-500/10",
-    previewGradient: "from-pink-100 via-rose-50 to-white",
+    category: "Salon & Spa",
+    title: "Aura Luxe",
+    description: "Premium beauty website focused on service menus, packages, and direct WhatsApp bookings.",
   },
   {
     id: "iron-forge",
-    icon: Dumbbell,
-    category: "Premium Gym Website",
-    title: "IronForge Fitness",
-    description:
-      "Bold fitness website with programs, transformation plans, membership pricing, and trial booking.",
-    features: [
-      "Training programs showcase",
-      "Membership plans & pricing",
-      "Transformation gallery",
-      "Free trial booking",
-      "Trainer profiles",
-      "Class schedule",
-    ],
-    color: "from-orange-500 to-red-500",
-    bgColor: "bg-orange-500/10",
-    previewGradient: "from-orange-100 via-red-50 to-white",
+    category: "Gym & Fitness",
+    title: "IronForge",
+    description: "Bold fitness website designed for program showcases and free trial lead generation.",
   },
   {
     id: "bloom-brew",
-    icon: Coffee,
-    category: "Modern Cafe Website",
-    title: "Bloom & Brew Cafe",
-    description:
-      "Warm cafe website with menu, signature items, gallery, reservation CTA, and contact form.",
-    features: [
-      "Digital menu with photos",
-      "Signature items highlight",
-      "Ambiance gallery",
-      "Table reservation",
-      "Opening hours & location",
-      "Online ordering link",
-    ],
-    color: "from-amber-500 to-yellow-500",
-    bgColor: "bg-amber-500/10",
-    previewGradient: "from-amber-100 via-yellow-50 to-white",
+    category: "Cafe & Restaurant",
+    title: "Bloom & Brew",
+    description: "Warm hospitality website with digital menus, table reservations, and ambiance galleries.",
   },
 ];
 
 export function DemoPortfolio() {
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -114,153 +77,171 @@ export function DemoPortfolio() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="portfolio"
-      className="relative py-24 lg:py-32 bg-[#fafaf9] pb-28 md:pb-24"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-6">
-            Demo Portfolio
-          </h2>
-          <p className="text-lg text-stone-600">
-            See how your business could look online. These are real examples of websites 
-            built for local businesses.
-          </p>
-        </div>
+    <div ref={sectionRef}>
+      <CinematicFrame
+        id="portfolio"
+        theme="darkroom"
+        className="py-24 lg:py-32"
+      >
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          {/* Section Header */}
+          <div
+            className={`max-w-4xl mb-32 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}
+          >
+            <div className="text-[10px] sm:text-xs font-medium text-[#9A8172] tracking-[0.2em] uppercase mb-8">
+              Demo Portfolio
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-light tracking-tight leading-[1.1] text-[#111111] mb-8">
+              Demo websites showing how local businesses could look online.
+            </h2>
+          </div>
 
-        {/* Demo Cards */}
-        <div className="space-y-12">
-          {demos.map((demo, index) => (
-            <div
-              key={demo.id}
-              className={`group relative bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm card-hover transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 200}ms` }}
-            >
-              <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
-                {/* Preview Side */}
-                <div className={`relative p-8 lg:p-12 bg-gradient-to-br ${demo.previewGradient} ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                  {/* Preview mockup */}
-                  <div className="relative mx-auto max-w-md">
-                    {/* Browser frame */}
-                    <div className="bg-stone-900 rounded-xl overflow-hidden shadow-2xl">
-                      {/* Browser header */}
-                      <div className="flex items-center gap-2 px-4 py-3 bg-stone-800">
-                        <div className="w-3 h-3 rounded-full bg-red-500" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                        <div className="w-3 h-3 rounded-full bg-green-500" />
-                        <div className="flex-1 ml-4">
-                          <div className="h-5 bg-stone-700 rounded-md max-w-xs mx-auto" />
-                        </div>
+          {/* Demo Cards / Full-width Gallery Rows */}
+          <div className="space-y-0 border-t border-[#E8DED1]">
+            {demos.map((demo, index) => (
+              <div
+                key={demo.id}
+                className={`group relative border-b border-[#E8DED1] transition-all duration-1000 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
+                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+              >
+                <div className="grid lg:grid-cols-[1fr_2fr] items-stretch min-h-[500px]">
+                  
+                  {/* Meta Side (Left) */}
+                  <div className="p-8 lg:p-12 lg:pr-24 border-b lg:border-b-0 lg:border-r border-[#E8DED1] flex flex-col justify-between">
+                    <div>
+                      <div className="text-[10px] text-[#9A8172] uppercase tracking-[0.2em] mb-8">
+                        {demo.category}
                       </div>
-                      {/* Browser content */}
-                      <div className={`h-64 bg-gradient-to-br ${demo.previewGradient} p-4`}>
-                        {/* Mock content */}
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${demo.color}`} />
-                            <div className="flex-1">
-                              <div className="h-3 w-24 bg-stone-300 rounded" />
-                              <div className="h-2 w-16 bg-stone-200 rounded mt-1" />
+                      <h3 className="text-4xl lg:text-5xl font-light text-[#111111] mb-6 tracking-tight">
+                        {demo.title}
+                      </h3>
+                      <p className="text-[#7C8068] font-light leading-relaxed max-w-sm">
+                        {demo.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-12 flex flex-col sm:flex-row gap-4">
+                      <Button
+                        onClick={() => window.open(getDemoLink(demo.id), "_blank")}
+                        variant="default"
+                        className="text-xs w-full sm:w-auto uppercase tracking-widest"
+                      >
+                        View Live Demo
+                      </Button>
+                      <Button
+                        onClick={() => openWhatsApp(demo.title)}
+                        variant="outline"
+                        className="text-xs w-full sm:w-auto uppercase tracking-widest"
+                      >
+                        Request Similar
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Preview Side (Right - Display Screen Mount) */}
+                  <div className="relative p-8 lg:p-16 flex items-center justify-center">
+                    
+                    {/* Plant Decorations (Outside Screen) */}
+                    {demo.id === "aura-luxe" && (
+                      <div className="absolute bottom-0 left-0 lg:left-4 w-[120px] h-[250px] lg:w-[180px] lg:h-[350px] z-30 opacity-85 pointer-events-none hidden sm:block drop-shadow-xl transform -rotate-2">
+                        <StudioPlant potColor="#B46A4C" />
+                      </div>
+                    )}
+                    {demo.id === "bloom-brew" && (
+                      <div className="absolute bottom-4 right-0 lg:right-4 w-[80px] h-[100px] lg:w-[120px] lg:h-[150px] z-30 opacity-90 pointer-events-none hidden sm:block drop-shadow-xl transform rotate-3">
+                        <FlowerPot variant="yellow" />
+                      </div>
+                    )}
+
+                    {/* Subtle Wall Panel / Screen Mount Depth */}
+                    <div className="absolute inset-y-8 inset-x-4 lg:inset-x-8 bg-[#F7F3EA] border border-[#E8DED1] shadow-[0_20px_40px_rgba(74,48,35,0.02)] rounded-sm pointer-events-none" />
+                    
+                    {/* Sharp dark physical display screen */}
+                    <div className="relative w-full max-w-[800px] aspect-[16/9] border-[6px] border-[#111111] bg-black overflow-hidden flex flex-col shadow-[0_30px_60px_rgba(17,17,17,0.15)] rounded-md z-10 transition-transform duration-700 group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_rgba(74,48,35,0.1)]">
+                      
+                      {/* Screen Glare / Reflection */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent pointer-events-none z-20" />
+                      
+                      {/* Browser UI Header (Dark Chrome) */}
+                      <div className="h-8 border-b border-white/5 bg-[#111] flex items-center px-4 gap-2 shrink-0 z-10">
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#333]" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#333]" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#333]" />
+                      </div>
+                      
+                      {/* The "Screen" Content Area */}
+                      <div className="flex-1 w-full relative overflow-hidden bg-black z-0">
+                        
+                        {demo.id === "aura-luxe" && (
+                          <div className="absolute inset-0 bg-[#F7F3EA] flex flex-col items-center">
+                            {/* Aura Luxe Abstract Layout */}
+                            <div className="w-full h-[40%] bg-[#E8DED1] flex items-center justify-center">
+                              <div className="w-[30%] h-[20%] border border-[#9A8172] opacity-30" />
+                            </div>
+                            <div className="w-full flex-1 flex p-4 gap-4">
+                              <div className="w-1/2 h-full bg-[#ffffff]/50 rounded-t-full" />
+                              <div className="w-1/2 h-full flex flex-col justify-center gap-2 px-4">
+                                <div className="w-[60%] h-2 bg-[#9A8172] opacity-60" />
+                                <div className="w-[40%] h-2 bg-[#9A8172] opacity-60" />
+                                <div className="w-[80%] h-1 bg-[#E8DED1] mt-2" />
+                                <div className="w-[70%] h-1 bg-[#E8DED1]" />
+                              </div>
                             </div>
                           </div>
-                          <div className="h-24 bg-white/60 rounded-lg" />
-                          <div className="grid grid-cols-3 gap-2">
-                            <div className="h-16 bg-white/40 rounded" />
-                            <div className="h-16 bg-white/40 rounded" />
-                            <div className="h-16 bg-white/40 rounded" />
+                        )}
+
+                        {demo.id === "iron-forge" && (
+                          <div className="absolute inset-0 bg-[#111111] flex flex-col">
+                            {/* IronForge Abstract Layout */}
+                            <div className="w-full h-[60%] bg-[#1a1a1a] relative overflow-hidden flex items-end">
+                              <div className="absolute -right-[10%] top-[10%] w-[50%] h-[150%] bg-[#B46A4C] opacity-20 transform rotate-12 blur-[2px]" />
+                              <div className="p-4 w-full">
+                                <div className="w-[70%] h-4 bg-[#F7F3EA] opacity-90 mb-2 transform -skew-x-12" />
+                                <div className="w-[50%] h-4 bg-[#B46A4C] opacity-90 transform -skew-x-12" />
+                              </div>
+                            </div>
+                            <div className="flex-1 w-full p-4 flex gap-2">
+                              <div className="flex-1 bg-[#222]" />
+                              <div className="flex-1 bg-[#222]" />
+                              <div className="flex-1 bg-[#B46A4C]/20" />
+                            </div>
                           </div>
-                          <div className="h-10 bg-gradient-to-r from-stone-400 to-stone-300 rounded-lg w-1/2 mx-auto" />
-                        </div>
+                        )}
+
+                        {demo.id === "bloom-brew" && (
+                          <div className="absolute inset-0 bg-[#2a1f1a] flex flex-col">
+                            {/* Bloom & Brew Abstract Layout */}
+                            <div className="w-full h-[15%] border-b border-[#4A3023] flex items-center justify-between px-4">
+                              <div className="w-[20%] h-2 bg-[#C8A96A] opacity-60 rounded-full" />
+                              <div className="w-[30%] h-1 bg-[#4A3023] rounded-full" />
+                            </div>
+                            <div className="flex-1 flex">
+                              <div className="w-[40%] h-full p-4 flex flex-col justify-center gap-3">
+                                <div className="w-[80%] h-3 bg-[#C8A96A] opacity-80" />
+                                <div className="w-[60%] h-2 bg-[#4A3023]" />
+                                <div className="w-[90%] h-1 bg-[#3a2822] mt-4" />
+                                <div className="w-[85%] h-1 bg-[#3a2822]" />
+                              </div>
+                              <div className="w-[60%] h-full p-4">
+                                <div className="w-full h-full bg-[#4A3023] rounded-tl-[40px] opacity-80" />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
                       </div>
                     </div>
-
-                    {/* Floating elements */}
-                    <div className="absolute -right-4 top-1/4 bg-white rounded-xl p-3 shadow-lg animate-float">
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${demo.color} flex items-center justify-center`}>
-                        <demo.icon className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Side */}
-                <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  {/* Category badge */}
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${demo.bgColor} w-fit mb-6`}>
-                    <demo.icon className={`w-4 h-4 text-transparent bg-clip-text bg-gradient-to-r ${demo.color}`} style={{ color: 'inherit' }} />
-                    <span className={`text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r ${demo.color}`} style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))`, WebkitBackgroundClip: 'text' }}>
-                      {demo.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl lg:text-3xl font-bold text-stone-900 mb-4">
-                    {demo.title}
-                  </h3>
-
-                  <p className="text-stone-600 mb-6 leading-relaxed">
-                    {demo.description}
-                  </p>
-
-                  {/* Features list */}
-                  <ul className="space-y-3 mb-8">
-                    {demo.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-3">
-                        <div className={`w-5 h-5 rounded-full bg-gradient-to-r ${demo.color} flex items-center justify-center flex-shrink-0`}>
-                          <Check className="w-3 h-3 text-white" />
-                        </div>
-                        <span className="text-stone-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTAs */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button
-                      onClick={() => window.open(getDemoLink(demo.id), "_blank")}
-                      className={`btn-primary bg-gradient-to-r ${demo.color} text-white px-6 py-5 rounded-xl font-semibold`}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Demo
-                    </Button>
-                    <Button
-                      onClick={() => openWhatsApp(demo.title)}
-                      variant="outline"
-                      className="btn-secondary border-stone-300 text-stone-700 hover:bg-stone-50 px-6 py-5 rounded-xl font-semibold"
-                    >
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Build Similar Site
-                    </Button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
-        {/* CTA after demos */}
-        <div
-          className={`mt-16 text-center transition-all duration-1000 delay-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <Button
-            onClick={() => openWhatsApp("custom")}
-            className="btn-primary bg-stone-900 hover:bg-stone-800 text-white px-8 py-6 text-base font-semibold rounded-xl"
-          >
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Discuss Your Project
-          </Button>
-        </div>
-      </div>
-    </section>
+      </CinematicFrame>
+    </div>
   );
 }

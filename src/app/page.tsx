@@ -1,3 +1,4 @@
+import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { WhatWeBuild } from "@/components/sections/WhatWeBuild";
@@ -14,6 +15,7 @@ import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 export default function Home() {
   return (
     <>
+      <Header />
       <main className="relative">
         <Hero />
         <Problem />

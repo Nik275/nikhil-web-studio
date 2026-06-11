@@ -2,20 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
-import {
-  Check,
-  MessageCircle,
-  Star,
-  Zap,
-  Crown,
-  RefreshCw,
-} from "lucide-react";
 
 const packages = [
   {
     id: "starter",
-    icon: Zap,
-    name: "Starter Website",
+    name: "Starter",
     price: "₹4,999 – ₹7,999",
     description: "Simple one-page websites",
     features: [
@@ -32,8 +23,7 @@ const packages = [
   },
   {
     id: "business",
-    icon: Star,
-    name: "Business Website",
+    name: "Business",
     price: "₹9,999 – ₹14,999",
     description: "Serious local businesses",
     features: [
@@ -51,8 +41,7 @@ const packages = [
   },
   {
     id: "premium",
-    icon: Crown,
-    name: "Premium Website",
+    name: "Premium",
     price: "₹19,999 – ₹29,999",
     description: "Stronger brand presence",
     features: [
@@ -112,100 +101,80 @@ export function Pricing() {
     <section
       ref={sectionRef}
       id="pricing"
-      className="relative py-24 lg:py-32 bg-[#fafaf9] pb-32 md:pb-24"
+      className="relative py-24 lg:py-40 bg-[#F7F3EA] text-[#111111]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`max-w-4xl mb-32 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-6">
-            Simple, Transparent Pricing
+          <div className="text-[10px] sm:text-xs font-medium text-[#9A8172] tracking-[0.2em] uppercase mb-12">
+            Pricing
+          </div>
+          <h2 className="text-5xl sm:text-6xl lg:text-8xl font-thin tracking-tight leading-[1.0] text-[#111111] mb-12">
+            Transparent.<br />
+            <span className="text-[#9A8172]">No surprises.</span>
           </h2>
-          <p className="text-lg text-stone-600">
-            Choose the package that fits your business needs. No hidden fees, no surprises.
+          <p className="text-xl lg:text-2xl text-[#7C8068] font-light leading-relaxed max-w-2xl">
+            Choose the package that fits your business needs. No hidden fees.
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* Editorial Pricing Columns (Wall Panels) */}
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-0 mb-32 relative">
+          
+          {/* Subtle wall rail behind panels */}
+          <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-[#d8cdbf] hidden lg:block -z-10" />
+
           {packages.map((pkg, index) => (
             <div
               key={pkg.id}
-              className={`relative bg-white rounded-3xl p-8 border-2 transition-all duration-700 card-hover ${
-                pkg.popular
-                  ? "border-blue-500 shadow-xl shadow-blue-500/10"
-                  : "border-stone-200 shadow-sm hover:border-stone-300"
-              } ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`relative p-10 lg:p-16 border border-[#d8cdbf] transition-all duration-1000 flex flex-col justify-between ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              } ${pkg.popular ? "bg-[#4A3023] text-[#F7F3EA] lg:-mt-6 lg:-mb-6 z-10 shadow-[0_40px_80px_rgba(74,48,35,0.2)] rounded-md border-[#4A3023]" : "bg-[#E8DED1] text-[#111111] lg:border-l-0 lg:first:border-l"}`}
               style={{ transitionDelay: `${(index + 1) * 150}ms` }}
             >
-              {/* Popular badge */}
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-                    Most Popular
-                  </div>
+                <div className="absolute top-0 right-8 bg-[#F7F3EA] text-[#4A3023] text-[10px] uppercase tracking-widest px-4 py-2 font-medium shadow-sm">
+                  Most Chosen
                 </div>
               )}
 
-              {/* Icon */}
-              <div
-                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
-                  pkg.popular ? "bg-blue-100" : "bg-stone-100"
-                }`}
-              >
-                <pkg.icon
-                  className={`w-7 h-7 ${
-                    pkg.popular ? "text-blue-600" : "text-stone-700"
-                  }`}
-                />
-              </div>
+              <div>
+                <div className={`text-[10px] uppercase tracking-[0.2em] mb-8 ${pkg.popular ? "text-[#C8A96A]" : "text-[#9A8172]"}`}>
+                  Package 0{index + 1}
+                </div>
+                <h3 className={`text-3xl font-light mb-4 tracking-tight ${pkg.popular ? "text-[#F7F3EA]" : "text-[#111111]"}`}>
+                  {pkg.name}
+                </h3>
+                <p className={`font-light leading-relaxed mb-12 min-h-[48px] ${pkg.popular ? "text-[#E8DED1]" : "text-[#7C8068]"}`}>
+                  {pkg.description}
+                </p>
 
-              {/* Package name */}
-              <h3 className="text-xl font-bold text-stone-900 mb-2">
-                {pkg.name}
-              </h3>
-              <p className="text-sm text-stone-500 mb-4">{pkg.description}</p>
-
-              {/* Price */}
-              <div className="mb-6">
-                <span className="text-3xl font-bold text-stone-900">
+                <div className={`text-4xl font-thin mb-16 tracking-tight ${pkg.popular ? "text-[#F7F3EA]" : "text-[#111111]"}`}>
                   {pkg.price}
-                </span>
+                </div>
+
+                <div className={`text-[10px] uppercase tracking-[0.2em] mb-8 border-b pb-4 ${pkg.popular ? "text-[#C8A96A] border-[#9A8172]/30" : "text-[#9A8172] border-[#d8cdbf]"}`}>
+                  Includes
+                </div>
+
+                <ul className="space-y-4 mb-16">
+                  {pkg.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className={`font-light text-sm lg:text-base ${pkg.popular ? "text-[#F7F3EA]" : "text-[#7C8068]"}`}>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              {/* Features */}
-              <ul className="space-y-3 mb-8">
-                {pkg.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-3">
-                    <div
-                      className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        pkg.popular
-                          ? "bg-blue-100 text-blue-600"
-                          : "bg-stone-100 text-stone-700"
-                      }`}
-                    >
-                      <Check className="w-3 h-3" />
-                    </div>
-                    <span className="text-sm text-stone-600">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
               <Button
                 onClick={() => openWhatsApp(pkg.name)}
-                className={`w-full py-5 rounded-xl font-semibold cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
-                  pkg.popular
-                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/25"
-                    : "bg-stone-900 hover:bg-stone-800 text-white shadow-lg shadow-stone-500/20"
-                }`}
+                variant={pkg.popular ? "white" : "default"}
+                className="w-full text-xs tracking-[0.2em] uppercase py-6"
               >
-                <MessageCircle className="w-4 h-4 mr-2" />
                 {pkg.cta}
               </Button>
             </div>
@@ -214,55 +183,39 @@ export function Pricing() {
 
         {/* Maintenance Add-on */}
         <div
-          className={`relative bg-gradient-to-br from-stone-900 to-stone-800 rounded-3xl p-8 lg:p-12 overflow-hidden transition-all duration-1000 delay-500 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`bg-[#E8DED1] border border-[#d8cdbf] p-10 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-16 transition-all duration-1000 delay-500 shadow-[0_15px_35px_rgba(74,48,35,0.02)] rounded-sm ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                backgroundSize: "40px 40px",
-              }}
-            />
-          </div>
-
-          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center">
-                  <RefreshCw className="w-6 h-6 text-amber-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Monthly Maintenance
-                  </h3>
-                  <p className="text-2xl font-bold text-amber-400">
-                    ₹999 – ₹2,999/month
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-6">
-                {maintenanceFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                    <span className="text-sm text-stone-300">{feature}</span>
-                  </div>
-                ))}
-              </div>
+          <div className="flex-1">
+            <div className="text-[10px] font-medium text-[#9A8172] tracking-[0.2em] uppercase mb-8 border-l border-[#C8A96A] pl-3">
+              Optional Add-on
+            </div>
+            <div className="flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-12 mb-10">
+              <h3 className="text-4xl lg:text-5xl font-thin text-[#111111] tracking-tight leading-[1.1]">
+                Monthly Maintenance
+              </h3>
+              <p className="text-2xl font-light text-[#9A8172] lg:pb-1">
+                ₹999 – ₹2,999/mo
+              </p>
             </div>
 
-            <Button
-              onClick={() => openWhatsApp("Maintenance Plan")}
-              className="bg-amber-500 hover:bg-amber-400 text-stone-900 px-8 py-5 rounded-xl font-semibold whitespace-nowrap cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-amber-500/25"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Add Maintenance
-            </Button>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-8">
+              {maintenanceFeatures.map((feature, index) => (
+                <div key={index} className="text-[#7C8068] font-light text-sm lg:text-base">
+                  {feature}
+                </div>
+              ))}
+            </div>
           </div>
+
+          <Button
+            onClick={() => openWhatsApp("Maintenance Plan")}
+            variant="default"
+            className="whitespace-nowrap shrink-0 px-8 py-6 text-xs tracking-[0.2em] uppercase"
+          >
+            Add Maintenance
+          </Button>
         </div>
       </div>
     </section>
